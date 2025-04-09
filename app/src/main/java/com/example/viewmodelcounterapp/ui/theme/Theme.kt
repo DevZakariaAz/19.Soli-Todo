@@ -1,4 +1,4 @@
-package com.example.lab_view_model.ui.theme
+package com.example.viewmodelcounterapp.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun LabViewModelTheme(
+fun ViewModelCounterAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

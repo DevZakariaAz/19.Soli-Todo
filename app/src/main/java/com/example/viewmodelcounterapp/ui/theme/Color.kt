@@ -1,4 +1,4 @@
-package com.example.lab_view_model.ui.theme
+package com.example.viewmodelcounterapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,7 +1,7 @@
-package com.example.lab_view_model.models
+package com.example.viewmodelcounterapp
 
 data class Todo(
-    val id: Int,
+    val id: Int = 0,
     val title: String,
     val completed: Boolean
 )

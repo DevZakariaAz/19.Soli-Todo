@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Lab-View-Model"
+rootProject.name = "ViewModelCounterApp"
 include(":app")
  

@@ -1,4 +1,4 @@
-package com.example.lab_view_model.models
+package com.example.viewmodelcounterapp
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

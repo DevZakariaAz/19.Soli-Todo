@@ -1,4 +1,4 @@
-package com.example.lab_view_model
+package com.example.viewmodelcounterapp
 
 import org.junit.Test
 
