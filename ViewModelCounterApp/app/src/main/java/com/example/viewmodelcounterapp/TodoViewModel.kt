@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
 
 class TodoViewModel : ViewModel() {
     private val _todos = MutableStateFlow<List<Todo>>(emptyList())
@@ -14,16 +16,27 @@ class TodoViewModel : ViewModel() {
         fetchTodos()
     }
 
-    private fun fetchTodos() {
+    fun fetchTodos() {
         viewModelScope.launch {
             try {
-                val result = RetrofitClient.api.getTodos()
+                val result = RetrofitClient.api.getTodos().take(15) // limit for testing
                 _todos.value = result
             } catch (e: Exception) {
-                // Handle error: you could emit a placeholder item with error info, or handle in UI
                 _todos.value = listOf(
                     Todo(id = -1, title = "Error: ${e.message}", completed = false)
                 )
+            }
+        }
+    }
+
+    fun toggleTaskCompletion(id: Int) {
+        _todos.update { currentTodos ->
+            currentTodos.map { todo ->
+                if (todo.id == id) {
+                    todo.copy(completed = !todo.completed)
+                } else {
+                    todo
+                }
             }
         }
     }
@@ -34,6 +47,7 @@ class TodoViewModel : ViewModel() {
                 val newTask = RetrofitClient.api.createTask(todo)
                 _todos.value += newTask
             } catch (e: Exception) {
+                // Handle error
             }
         }
     }
